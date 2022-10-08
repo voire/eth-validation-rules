@@ -1,4 +1,4 @@
-const ETH_ADDRESS_LENGTH = 42 // with `0x` prefix
+const ETH_ADDRESS_LENGTH = 42 // 20 bytes with `0x` prefix
 
 export function isHex(value: string): boolean {
   return /^[a-fA-F0-9]+$/.test(value)
