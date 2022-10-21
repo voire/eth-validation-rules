@@ -63,5 +63,8 @@
     "*.{css,scss,sass,html,vue}": [
       "stylelint --fix"
     ]
+  },
+  "dependencies": {
+    "ethers": "^5.7.2"
   }
 }

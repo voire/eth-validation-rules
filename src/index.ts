@@ -1,4 +1,4 @@
-import { isEthAddress, isHex, isNullEthAddress, isPrefixedHex, makeValidationRule } from './utils'
+import { isEnsName, isEthAddress, isHex, isNullEthAddress, isPrefixedHex, makeValidationRule } from './utils'
 
 export const hex = makeValidationRule(
   isHex,
@@ -23,4 +23,9 @@ export const nullEthAddress = makeValidationRule(
 export const notNullEthAddress = makeValidationRule(
   (value: string) => isEthAddress(value) && !isNullEthAddress(value),
   'The value cannot be the null ethereum address!',
+)
+
+export const ensName = makeValidationRule(
+  isEnsName,
+  'The value is not a valid ENS name!',
 )

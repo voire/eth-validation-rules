@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { isEthAddress, isHex, isNullEthAddress, isPrefixedHex } from './checks'
+import { isEnsName, isEthAddress, isHex, isNullEthAddress, isPrefixedHex } from './checks'
 
 describe('isHex', () => {
   test('should accept valid string', () => {
@@ -62,5 +62,27 @@ describe('isNullEthAddress', () => {
 
   test('should not accept zero but short address', () => {
     expect(isNullEthAddress('0x00000000000000')).toBe(false)
+  })
+})
+
+describe('isEnsName', () => {
+  test('should accept valid ENS name', () => {
+    expect(isEnsName('eth.eth')).toBe(true)
+  })
+
+  test('shoud accept an ENS name with an emoji', () => {
+    expect(isEnsName('🇺🇸22221.eth')).toBe(true)
+  })
+
+  test('shoud accept an ENS name with dots in label', () => {
+    expect(isEnsName('some.name.eth')).toBe(true)
+  })
+
+  test('should not accept a name with random symbols', () => {
+    expect(isEnsName('&#$4s.eth')).toBe(false)
+  })
+
+  test('should accept a name with unusual extensions', () => {
+    expect(isEnsName('eth.com')).toBe(true)
   })
 })

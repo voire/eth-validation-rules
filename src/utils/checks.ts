@@ -1,3 +1,5 @@
+import { utils } from 'ethers'
+
 const ETH_ADDRESS_LENGTH = 42 // 20 bytes with `0x` prefix
 
 export function isHex(value: string): boolean {
@@ -14,4 +16,8 @@ export function isEthAddress(value: string): boolean {
 
 export function isNullEthAddress(value: string): boolean {
   return isEthAddress(value) && !(+value)
+}
+
+export function isEnsName(value: string): boolean {
+  return utils.isValidName(value)
 }
