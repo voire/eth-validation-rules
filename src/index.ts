@@ -24,3 +24,5 @@ export const notNullEthAddress = makeValidationRule(
   (value: string) => isEthAddress(value) && !isNullEthAddress(value),
   'The value cannot be the null ethereum address!',
 )
+
+export { isEthAddress, isHex, isNullEthAddress, isPrefixedHex }
